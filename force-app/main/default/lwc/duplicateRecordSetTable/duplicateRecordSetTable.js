@@ -12,7 +12,7 @@ export default class DuplicateRecordSetTable extends LightningElement {
   totalRecordCount = 0;
   @api duplicateRecordSetList = [];
 
-  connectedCallback() {
+  renderedCallback() {
     this.updateTotalRecords();
     this.updateTotalRecordCount();
   }
@@ -27,15 +27,15 @@ export default class DuplicateRecordSetTable extends LightningElement {
   }
 
   updateTotalRecords() {
-    this.totalRecords = (this.duplicateRecordSetList != null)? this.duplicateRecordSetList.length : 0
+    this.totalRecords = (this.duplicateRecordSetList != null)? this.duplicateRecordSetList.length : 0;
+    console.log(this.totalRecords);
   }
 
   updateTotalRecordCount() {
     if (this.duplicateRecordSetList != null) {
-      this.duplicateRecordSetList.forEach(el => this.totalRecordCount + parseInt(el));
+      let sum = 0;
+      this.duplicateRecordSetList.forEach(el => sum += el.RecordCount);
+      this.totalRecordCount = sum;
     }
   }
-
-
-
 }

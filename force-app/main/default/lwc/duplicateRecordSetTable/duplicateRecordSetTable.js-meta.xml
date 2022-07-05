@@ -2,11 +2,7 @@
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>54.0</apiVersion>
     <description>Duplicate Record Set Table</description>
-    <isExposed>true</isExposed>
+    <isExposed>false</isExposed>
     <masterLabel>Duplicate Record Set Table</masterLabel>
-
-    <targets>
-        <target>lightning__HomePage</target>
-    </targets>
 
 </LightningComponentBundle>
