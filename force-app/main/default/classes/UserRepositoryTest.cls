@@ -3,27 +3,27 @@
  */
 
 @IsTest
-private class ProfileRepositoryTest {
+public with sharing class UserRepositoryTest {
 
-    @TestSetup private static void test() {
+    @TestSetup private static void setup() {
         TestUtils.saveTestStandardUser();
     }
 
-    @IsTest private static void testGetProfileExists(){
+    @IsTest private static void testGetUserExisted(){
         User usr = TestUtils.getTestUser('');
         System.runAs(usr) {
 
         }
     }
 
-    @IsTest private static void testGetProfileAbsent(){
+    @IsTest private static void testGetUserAbsent(){
         User usr = TestUtils.getTestUser('');
         System.runAs(usr) {
 
         }
     }
 
-    @IsTest private static void testGetProfileNull(){
+    @IsTest private static void testGetUserNull(){
         User usr = TestUtils.getTestUser('');
         System.runAs(usr) {
 

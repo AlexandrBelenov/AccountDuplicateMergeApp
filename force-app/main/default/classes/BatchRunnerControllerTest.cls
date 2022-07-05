@@ -8,4 +8,10 @@ private class BatchRunnerControllerTest {
     @IsTest private static void testRunBatch() {
 
     }
+
+    private class MockedBRC implements BatchRunnerController.Singleton {
+        public BatchRunnerController.Singleton getInstance() {
+            return null;
+        }
+    }
 }
