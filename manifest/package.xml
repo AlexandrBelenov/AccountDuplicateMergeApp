@@ -40,5 +40,12 @@
         <members>*</members>
         <name>CustomMetadata</name>
     </types>
+    <types>
+        <members>Click_to_Merge</members>
+        <members>Click_to_View_Details</members>
+        <members>Duplicate_Record_Set_Name</members>
+        <members>Record_Count</members>
+        <name>CustomLabel</name>
+    </types>
     <version>55.0</version>
 </Package>

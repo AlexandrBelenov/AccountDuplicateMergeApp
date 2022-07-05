@@ -10,23 +10,14 @@ private class ProfileRepositoryTest {
     }
 
     @IsTest private static void testGetProfileExists(){
-        User usr = TestUtils.getTestUser('');
-        System.runAs(usr) {
 
-        }
     }
 
     @IsTest private static void testGetProfileAbsent(){
-        User usr = TestUtils.getTestUser('');
-        System.runAs(usr) {
 
-        }
     }
 
     @IsTest private static void testGetProfileNull(){
-        User usr = TestUtils.getTestUser('');
-        System.runAs(usr) {
 
-        }
     }
 }

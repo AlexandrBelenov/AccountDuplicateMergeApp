@@ -10,4 +10,8 @@ public with sharing class UserRepository {
                 WHERE Username = :username
         ];
     }
+
+    public static void insertUser(User usr) {
+        insert usr;
+    }
 }

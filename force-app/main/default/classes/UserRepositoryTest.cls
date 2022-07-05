@@ -11,22 +11,11 @@ public with sharing class UserRepositoryTest {
 
     @IsTest private static void testGetUserExisted(){
         User usr = TestUtils.getTestUser('');
-        System.runAs(usr) {
 
-        }
     }
 
     @IsTest private static void testGetUserAbsent(){
         User usr = TestUtils.getTestUser('');
-        System.runAs(usr) {
 
-        }
-    }
-
-    @IsTest private static void testGetUserNull(){
-        User usr = TestUtils.getTestUser('');
-        System.runAs(usr) {
-
-        }
     }
 }

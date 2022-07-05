@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>Click_to_Merge</fullName>
+        <categories>title</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Click to Merge</shortDescription>
+        <value>Click to Merge</value>
+    </labels>
+    <labels>
+        <fullName>Click_to_View_Details</fullName>
+        <categories>title</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Click to View Details</shortDescription>
+        <value>Click to View Details</value>
+    </labels>
+    <labels>
+        <fullName>Duplicate_Record_Set_Name</fullName>
+        <categories>Column</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Duplicate Record Set Name</shortDescription>
+        <value>Duplicate Record Set Name</value>
+    </labels>
+    <labels>
+        <fullName>Record_Count</fullName>
+        <categories>Column</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Record Count</shortDescription>
+        <value>Record Count</value>
+    </labels>
+</CustomLabels>

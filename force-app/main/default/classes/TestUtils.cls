@@ -24,7 +24,7 @@ public class TestUtils {
                 TimeZoneSidKey='America/Los_Angeles'
                 );
 
-        insert usr;
+        UserRepository.insertUser(usr);
         return usr;
     }
 

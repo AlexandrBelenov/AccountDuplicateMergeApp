@@ -9,9 +9,4 @@ private class BatchRunnerControllerTest {
 
     }
 
-    private class MockedBRC implements BatchRunnerController.Singleton {
-        public BatchRunnerController.Singleton getInstance() {
-            return null;
-        }
-    }
 }

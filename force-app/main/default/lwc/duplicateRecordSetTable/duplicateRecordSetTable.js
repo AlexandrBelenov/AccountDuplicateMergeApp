@@ -23,12 +23,10 @@ export default class DuplicateRecordSetTable extends LightningElement {
     } else if (event.detail.action.name ==='merge_records') {
       // this.runNewBatch(event.detail.row.Name);
     }
-    console.log(event.detail.action.name);
   }
 
   updateTotalRecords() {
     this.totalRecords = (this.duplicateRecordSetList != null)? this.duplicateRecordSetList.length : 0;
-    console.log(this.totalRecords);
   }
 
   updateTotalRecordCount() {
