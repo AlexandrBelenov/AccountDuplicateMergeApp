@@ -19,9 +19,9 @@ export default class DuplicateRecordSetTable extends LightningElement {
 
   handleRowAction(event) {
     if (event.detail.action.name === 'open_records') {
-      // this.showModalWindow(event.detail.row.Id);
+
     } else if (event.detail.action.name ==='merge_records') {
-      // this.runNewBatch(event.detail.row.Name);
+
     }
   }
 

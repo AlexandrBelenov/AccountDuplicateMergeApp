@@ -1,19 +1,24 @@
-// import df from '@salesforce/label/'
+import lClickToMerge from '@salesforce/label/c.Click_to_Merge'
+import lClickToViewDetails from '@salesforce/label/c.Click_to_View_Details'
+import lDuplicateRecordSetName from '@salesforce/label/c.Duplicate_Record_Set_Name'
+import lRecordCount from '@salesforce/label/c.Record_Count'
+import lMerge from '@salesforce/label/c.Merge'
+
 let columns = [
   {
     fieldName: 'Name',
-    label: 'Duplicate Record Set Name',
+    label: lDuplicateRecordSetName,
     type: 'button',
     typeAttributes: {
       label: { fieldName: 'Name'},
-      title: 'Click to View Details',
+      title: lClickToViewDetails,
       name: 'open_records',
       variant: "base"
     }
   },
   {
     fieldName: 'RecordCount',
-    label: 'Record Count',
+    label: lRecordCount,
     initialWidth: 150,
     type: 'String'
   },
@@ -23,9 +28,9 @@ let columns = [
     type: 'button',
     initialWidth: 100,
     typeAttributes: {
-      label: 'Merge',
+      label: lMerge,
       name: 'merge_records',
-      title: 'Click to Merge',
+      title: lClickToMerge,
       variant: "brand"
     }
   }

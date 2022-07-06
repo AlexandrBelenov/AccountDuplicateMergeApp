@@ -25,6 +25,14 @@
         <value>Duplicate Record Set Name</value>
     </labels>
     <labels>
+        <fullName>Merge</fullName>
+        <categories>title</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Merge</shortDescription>
+        <value>Merge</value>
+    </labels>
+    <labels>
         <fullName>Record_Count</fullName>
         <categories>Column</categories>
         <language>en_US</language>

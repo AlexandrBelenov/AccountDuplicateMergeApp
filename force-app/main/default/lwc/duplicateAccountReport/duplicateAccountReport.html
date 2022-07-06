@@ -4,9 +4,15 @@
 
 <!-- Duplicate Account Report -->
 <template>
-  <div>
-    <div></div>
-    <lightning-button variant="brand" label="Run Report" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+  <div class="slds-box slds-theme_default">
+    <div class="slds-grid">
+      <div class='slds-text-heading_medium slds-size_1-of-2'>
+        Duplicate Account Report
+      </div>
+      <div class='slds-size_1-of-2 slds-text-align_right'>
+        <lightning-button variant="brand" label="Run Report" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+      </div>
+    </div>
 
     <c-duplicate-record-set-table duplicate-record-set-list={duplicateRecordSetList}></c-duplicate-record-set-table>
 
