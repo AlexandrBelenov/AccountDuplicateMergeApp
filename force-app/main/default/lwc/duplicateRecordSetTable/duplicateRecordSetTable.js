@@ -6,10 +6,9 @@ import { api, LightningElement } from "lwc";
 import columns from "./duplicateRecordSetTableColumns";
 
 export default class DuplicateRecordSetTable extends LightningElement {
-  columns = columns;
-
   totalRecords = 0;
   totalRecordCount = 0;
+  columns = columns;
   @api duplicateRecordSetList = [];
 
   renderedCallback() {
@@ -19,9 +18,9 @@ export default class DuplicateRecordSetTable extends LightningElement {
 
   handleRowAction(event) {
     if (event.detail.action.name === 'open_records') {
-
+      //code here
     } else if (event.detail.action.name ==='merge_records') {
-
+      // code here
     }
   }
 
