@@ -9,6 +9,7 @@ export default class DuplicateRecordSetTable extends LightningElement {
   totalRecords = 0;
   totalRecordCount = 0;
   columns = columns;
+  modalDuplicateRecordSetId = '';
   @api duplicateRecordSetList = [];
 
   renderedCallback() {
@@ -18,9 +19,9 @@ export default class DuplicateRecordSetTable extends LightningElement {
 
   handleRowAction(event) {
     if (event.detail.action.name === 'open_records') {
-      //code here
+      this.showModalWindow(event.detail.row.Id);
     } else if (event.detail.action.name ==='merge_records') {
-      // code here
+      this.showModalWindow(event.detail.row.Id);
     }
   }
 
@@ -35,4 +36,12 @@ export default class DuplicateRecordSetTable extends LightningElement {
       this.totalRecordCount = sum;
     }
   }
+
+  showModalWindow(id) {
+    this.modalDuplicateRecordSetId = id;
+  }
+  closeModal() {
+    this.modalDuplicateRecordSetId = ''
+  }
+
 }

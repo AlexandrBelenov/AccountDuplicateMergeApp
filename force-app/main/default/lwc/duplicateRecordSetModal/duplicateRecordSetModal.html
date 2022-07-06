@@ -1,0 +1,47 @@
+<!--
+ - Created by alexanderbelenov on 06.07.2022.
+ -->
+
+<!-- Duplicate Record Set Modal -->
+<template>
+  <template if:true={duplicateRecordSetId}>
+    <section class="slds-modal slds-fade-in-open slds-modal_medium" >
+      <div class="slds-modal__container ">
+        <header class="slds-modal__header">
+          <h1 id="modal-heading" class="slds-modal__title">Modal header</h1>
+        </header>
+        <main class="slds-modal__content">
+          <template if:true={isFirstStep}>
+            <div>1. View Duplicates</div>
+          </template>
+          <template if:true={isSecondStep}>
+            <div>2. Compare Accounts</div>
+          </template>
+          <template if:true={isThirdStep}>
+            <div>3. Save Account</div>
+          </template>
+        </main>
+        <footer class="slds-modal__footer">
+          <div class="slds-grid">
+            <div class="slds-size_1-of-6 slds-text-align_left">
+              <template if:false={isFirstStep}>
+                <lightning-button class="slds-p-right_xx-small" label="Previous" variant="neutral" onclick={prevStep}></lightning-button>
+              </template>
+            </div>
+            <div class="slds-size_4-of-6 slds-text-align_center">
+              <c-duplicate-record-merge-process current-step={currentStepName}></c-duplicate-record-merge-process>
+            </div>
+            <div class="slds-size_1-of-6 slds-text-align_right">
+              <template if:false={isThirdStep}>
+                <lightning-button label="Next" variant="neutral" value="2" onclick={nextStep}></lightning-button>
+              </template>
+              <template if:true={isThirdStep}>
+                <lightning-button label="Save" variant="brand" onclick={save}></lightning-button>
+              </template>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </section>
+  </template>
+</template>

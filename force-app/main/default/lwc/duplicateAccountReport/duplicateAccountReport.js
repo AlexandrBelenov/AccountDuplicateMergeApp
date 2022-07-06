@@ -10,7 +10,7 @@ export default class DuplicateAccountReport extends LightningElement {
   handleClick() {
     this.duplicateRecordSetList = [
       {
-        Id: 0,
+        Id: 3,
         Name: 'Sasha',
         RecordCount: 15
       },
@@ -26,4 +26,5 @@ export default class DuplicateAccountReport extends LightningElement {
       }
     ];
   }
+
 }
