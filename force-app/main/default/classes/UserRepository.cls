@@ -4,11 +4,18 @@
 
 public with sharing class UserRepository {
     public static User getUser(String username) {
-        return [
-                SELECT Id
-                FROM User
-                WHERE Username = :username
-        ];
+        username = (String.isBlank(username))? '' : username;
+        try {
+            User usr = [
+                    SELECT Id
+                    FROM User
+                    WHERE Username = :username
+            ];
+            return usr;
+        } catch (Exception e) {
+
+        }
+        return null;
     }
 
     public static void insertUser(User usr) {

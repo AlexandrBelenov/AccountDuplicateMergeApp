@@ -6,10 +6,16 @@ public with sharing class ProfileRepository {
 
     public static Profile getProfile(String name) {
         name = (String.isBlank(name))? '' : name;
-        return [
-                SELECT Id
-                FROM Profile
-                WHERE Name=:name
-        ];
+        try {
+            Profile prof = [
+                    SELECT Id
+                    FROM Profile
+                    WHERE Name=:name
+            ];
+            return prof;
+        } catch (Exception e) {
+
+        }
+        return null;
     }
 }

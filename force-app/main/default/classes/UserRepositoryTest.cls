@@ -11,11 +11,12 @@ public with sharing class UserRepositoryTest {
 
     @IsTest private static void testGetUserExisted(){
         User usr = TestUtils.getTestUser('');
-
+        System.assertNotEquals(usr, null);
     }
 
     @IsTest private static void testGetUserAbsent(){
-        User usr = TestUtils.getTestUser('');
+        User usr = TestUtils.getTestUser('NotExistedUserName');
+        System.assertEquals(usr, null);
 
     }
 }

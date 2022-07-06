@@ -5,19 +5,13 @@
 @IsTest
 private class ProfileRepositoryTest {
 
-    @TestSetup private static void test() {
-        TestUtils.saveTestStandardUser();
+    @IsTest private static void testGetProfileExists() {
+        Profile prof = ProfileRepository.getProfile(TestUtils.TEST_USER_PROFILE);
+        System.assertNotEquals(prof, null);
     }
 
-    @IsTest private static void testGetProfileExists(){
-
-    }
-
-    @IsTest private static void testGetProfileAbsent(){
-
-    }
-
-    @IsTest private static void testGetProfileNull(){
-
+    @IsTest private static void testGetProfileAbsent() {
+        Profile prof = ProfileRepository.getProfile('NonExistedProfile');
+        System.assertEquals(prof, null);
     }
 }
