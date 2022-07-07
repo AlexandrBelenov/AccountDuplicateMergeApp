@@ -3,28 +3,18 @@
  */
 
 import { LightningElement } from "lwc";
+import runReport from '@salesforce/apex/ReportController.runReport'
 
 export default class DuplicateAccountReport extends LightningElement {
-  duplicateRecordSetList = []
+  duplicateRecordSetList;
+  error;
 
   handleClick() {
-    this.duplicateRecordSetList = [
-      {
-        Id: 3,
-        Name: 'Sasha',
-        RecordCount: 15
-      },
-      {
-        Id: 1,
-        Name: 'Masha',
-        RecordCount: 10
-      },
-      {
-        Id: 2,
-        Name: 'Pasha',
-        RecordCount: 5
-      }
-    ];
+      runReport().then(result => {
+        this.duplicateRecordSetList = result;
+      }).catch(error => {
+        this.error = error
+      })
   }
 
 }
