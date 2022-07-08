@@ -1,0 +1,23 @@
+/**
+ * Created by alexanderbelenov on 09.07.2022.
+ */
+
+public with sharing class DuplicateRecordRepository {
+
+    public static List<CustomDuplicateRecordSet__c> getCustomDuplicateRecordSet() {
+        return [
+                SELECT Id, Name
+                FROM CustomDuplicateRecordSet__c
+        ];
+    }
+
+    public static List<CustomDuplicateRecordItem__c>  getCustomDuplicateRecordItem(Set<Id> parentIds) {
+        if (parentIds == null || parentIds.isEmpty()) return new List<CustomDuplicateRecordItem__c>();
+        return [
+                SELECT Id, Name, CustomDuplicateRecordSet__c, Account__c
+                FROM CustomDuplicateRecordItem__c
+                WHERE CustomDuplicateRecordSet__c IN :parentIds
+        ];
+    }
+
+}
