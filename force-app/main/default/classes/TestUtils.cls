@@ -22,7 +22,7 @@ public class TestUtils {
                 LanguageLocaleKey='en_US',
                 LocaleSidKey='en_US',
                 TimeZoneSidKey='America/Los_Angeles'
-                );
+        );
 
         UserRepository.insertUser(usr);
         return usr;
