@@ -9,8 +9,6 @@ public with sharing class FindDuplicatesJob {
 
         this.saveDuplicateSets(duplicateMap);
 
-
-
     }
 
     private Map<String, List<Id>> find() {
@@ -22,20 +20,27 @@ public with sharing class FindDuplicatesJob {
                 Database.query(Utils.getAccountQuery(fields))
         );
 
-        Map<String, List<Id>> duplicateMap = new Map<String, List<Id>>();
+        Map<String, List<Id>> rangedMap = new Map<String, List<Id>>();
 
         for (SObject acc : accounts.values()) {
             String key = Utils.generateFieldValueKey(matchingRules.values(), (Account)acc);
-            if (duplicateMap.containsKey(key)) {
-                duplicateMap.get(key).add(acc.id);
+            if (rangedMap.containsKey(key)) {
+                rangedMap.get(key).add(acc.id);
             } else {
                 List<Id> ids = new List<Id>();
                 ids.add(acc.Id);
-                duplicateMap.put(key, ids);
+                rangedMap.put(key, ids);
             }
         }
 
-        return duplicateMap;
+        Map<String, List<Id>> duplicates = new Map<String, List<Id>>();
+        for (String key : rangedMap.keySet()) {
+            if (rangedMap.get(key).size() > 1) {
+                duplicates.put(key, rangedMap.get(key));
+            }
+        }
+
+        return duplicates;
     }
 
     private void saveDuplicateSets(Map<String, List<Id>> duplicates) {
@@ -48,10 +53,19 @@ public with sharing class FindDuplicatesJob {
         insert customDuplicateRecordSets;
 
         // generate the DuplicateRecordItem
-        List<List<Id>> IdMatrix = duplicates.values();
-        for (Integer i = 0; i < duplicates.keySet().size(); i++){
+        List<List<Id>> idMatrix = duplicates.values();
+        List<CustomDuplicateRecordItem__c> customDuplicateRecordItems = new List<CustomDuplicateRecordItem__c>();
+        for (Integer i = 0; i < duplicates.keySet().size(); i++) {
+            for (Integer j = 0; j < idMatrix.get(i).size(); j++) {
+                CustomDuplicateRecordItem__c recordItem = new CustomDuplicateRecordItem__c(
+                        CustomDuplicateRecordSet__c = customDuplicateRecordSets.get(i).Id,
+                        Account__c = idMatrix.get(i).get(j)
+                );
+                customDuplicateRecordItems.add(recordItem);
+            }
 
         }
+        insert customDuplicateRecordItems;
     }
 
 }
