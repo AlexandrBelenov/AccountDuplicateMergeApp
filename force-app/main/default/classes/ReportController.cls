@@ -10,6 +10,8 @@ public with sharing class ReportController {
     public static List<DuplicateRecordSetData> runReport() {
 
         List<DuplicateRecordSetData> result = reportCtrl.runReport();
+        // call batch - platform event
+        //
 
         return result;
     }

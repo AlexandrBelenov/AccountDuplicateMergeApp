@@ -3,4 +3,6 @@
  */
 
 public with sharing class Constants {
+    public static final String COMPARE_METHOD_FUZZY = 'Fuzzy';
+    public static final String COMPARE_METHOD_EXACT = 'Exact';
 }
