@@ -6,7 +6,7 @@ public with sharing class DuplicateRecordRepository {
 
     public static List<CustomDuplicateRecordSet__c> getCustomDuplicateRecordSet() {
         return [
-                SELECT Id, Name
+                SELECT Id, Name, Record_Count__c
                 FROM CustomDuplicateRecordSet__c
         ];
     }

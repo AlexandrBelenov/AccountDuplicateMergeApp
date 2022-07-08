@@ -11,9 +11,9 @@ public with sharing class DuplicateRecordSetData {
     public String Name {set; get;}
 
     @AuraEnabled
-    public Integer RecordCount {set; get;}
+    public Decimal RecordCount {set; get;}
 
-    public DuplicateRecordSetData(String id, String name, Integer recordCount) {
+    public DuplicateRecordSetData(String id, String name, Decimal recordCount) {
         this.Id = id;
         this.Name = name;
         this.RecordCount = recordCount;

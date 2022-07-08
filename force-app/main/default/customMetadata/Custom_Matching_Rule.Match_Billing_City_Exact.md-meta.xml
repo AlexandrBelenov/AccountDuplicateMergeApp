@@ -12,6 +12,6 @@
     </values>
     <values>
         <field>Field_Name__c</field>
-        <value xsi:type="xsd:string">Billing City</value>
+        <value xsi:type="xsd:string">BillingCity</value>
     </values>
 </CustomMetadata>
