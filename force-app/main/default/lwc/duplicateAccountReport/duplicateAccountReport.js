@@ -14,6 +14,7 @@ export default class DuplicateAccountReport extends LightningElement {
         this.duplicateRecordSetList = result;
       }).catch(error => {
         this.error = error
+        console.log(error)
       })
   }
 

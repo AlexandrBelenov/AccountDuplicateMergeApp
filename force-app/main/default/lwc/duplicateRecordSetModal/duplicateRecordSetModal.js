@@ -5,15 +5,19 @@ import { api, LightningElement} from "lwc";
 
 export default class DuplicateRecordSetModal extends LightningElement {
   @api duplicateRecordSetId;
+  selectedRows;
   currentStepNumber = 1;
   currentStepName;
   isFirstStep = false;
   isSecondStep = false;
   isThirdStep = false;
 
-  constructor() {
-    super();
+  renderedCallback() {
     this.showCurrentStep();
+  }
+
+  handleRowsSelection(event) {
+    this.selectedRows = event.detail;
   }
 
   showCurrentStep() {
@@ -52,5 +56,4 @@ export default class DuplicateRecordSetModal extends LightningElement {
     this.currentStepNumber = 1;
     this.showCurrentStep()
   }
-
 }

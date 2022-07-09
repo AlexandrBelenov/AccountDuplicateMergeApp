@@ -5,7 +5,7 @@
 public with sharing class DuplicateRecordSetData {
 
     @AuraEnabled
-    public String Id {set; get;}
+    public Id Id {set; get;}
 
     @AuraEnabled
     public String Name {set; get;}
@@ -13,7 +13,7 @@ public with sharing class DuplicateRecordSetData {
     @AuraEnabled
     public Decimal RecordCount {set; get;}
 
-    public DuplicateRecordSetData(String id, String name, Decimal recordCount) {
+    public DuplicateRecordSetData(Id id, String name, Decimal recordCount) {
         this.Id = id;
         this.Name = name;
         this.RecordCount = recordCount;

@@ -20,4 +20,13 @@ public with sharing class DuplicateRecordRepository {
         ];
     }
 
+    public static Set<CustomDuplicateRecordItem__c> getSomeCustomDuplicateRecordItem(Set<Id> recordItemIds) {
+        if (recordItemIds == null || recordItemIds.isEmpty()) return new Set<CustomDuplicateRecordItem__c>();
+        Set<CustomDuplicateRecordItem__c> ids = new Set<CustomDuplicateRecordItem__c>([
+                SELECT Id, Name, CustomDuplicateRecordSet__c, Account__c
+                FROM CustomDuplicateRecordItem__c
+                WHERE Id IN :recordItemIds
+        ]);
+        return ids;
+    }
 }

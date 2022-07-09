@@ -12,7 +12,11 @@
         </header>
         <main class="slds-modal__content">
           <template if:true={isFirstStep}>
-            <div>1. View Duplicates</div>
+            <c-duplicate-record-item-select
+              duplicate-record-set-id={duplicateRecordSetId}
+              onselectedrows={handleRowsSelection}
+            >
+            </c-duplicate-record-item-select>
           </template>
           <template if:true={isSecondStep}>
             <div>2. Compare Accounts</div>

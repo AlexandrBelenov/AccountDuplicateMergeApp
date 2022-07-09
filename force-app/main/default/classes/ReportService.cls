@@ -19,4 +19,18 @@ public with sharing class ReportService {
         return result;
     }
 
+    public List<DuplicateRecordItemData> getDuplicateRecordItems(Id duplicateRecordSetId) {
+        List<DuplicateRecordItemData> result;
+        try {
+            List<CustomDuplicateRecordItem__c> recordItems = DuplicateRecordRepository.getCustomDuplicateRecordItem(new Set<Id>{duplicateRecordSetId});
+            Set<Id> accountIds = Convertor.getDuplicateRecordItemLinkedAccount(recordItems);
+            List<Account> accounts = AccountRepository.getAccounts(accountIds);
+            result = Convertor.convertAccountToDuplicateRecordItemData(accounts);
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+
+        return result;
+    }
+
 }

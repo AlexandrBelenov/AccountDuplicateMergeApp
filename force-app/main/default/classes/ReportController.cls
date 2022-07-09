@@ -8,11 +8,14 @@ public with sharing class ReportController {
 
     @AuraEnabled
     public static List<DuplicateRecordSetData> runReport() {
-
         List<DuplicateRecordSetData> result = reportCtrl.runReport();
-        // call batch - platform event
-        //
-
+        return result;
+    }
+    @AuraEnabled(Cacheable=true)
+    public static List<DuplicateRecordItemData> getDuplicateRecordItems(Id duplicateRecordSetId) {
+        System.debug(duplicateRecordSetId);
+        List<DuplicateRecordItemData> result = reportCtrl.getDuplicateRecordItems(duplicateRecordSetId);
+        System.debug(result);
         return result;
     }
 }
