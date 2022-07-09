@@ -5,7 +5,9 @@ import { api, LightningElement} from "lwc";
 
 export default class DuplicateRecordSetModal extends LightningElement {
   @api duplicateRecordSetId;
-  selectedRows;
+  selectedAccounts;
+  selectedMaster;
+
   currentStepNumber = 1;
   currentStepName;
   isFirstStep = false;
@@ -17,7 +19,13 @@ export default class DuplicateRecordSetModal extends LightningElement {
   }
 
   handleRowsSelection(event) {
-    this.selectedRows = event.detail;
+    this.selectedAccounts = event.detail;
+  }
+
+  handleMasterSelection(event) {
+    if (event.detail && event.detail.length > 0) {
+      this.selectedMaster = event.detail[0];
+    }
   }
 
   showCurrentStep() {

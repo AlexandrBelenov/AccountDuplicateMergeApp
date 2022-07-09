@@ -20,6 +20,10 @@
           </template>
           <template if:true={isSecondStep}>
             <div>2. Compare Accounts</div>
+            <c-compare-accounts
+              selected-accounts={selectedAccounts}
+              onmasterselected={handleMasterSelection}
+            ></c-compare-accounts>
           </template>
           <template if:true={isThirdStep}>
             <div>3. Save Account</div>

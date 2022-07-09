@@ -15,7 +15,6 @@ export default class DuplicateRecordSetTable extends LightningElement {
   renderedCallback() {
     this.updateTotalRecords();
     this.updateTotalRecordCount();
-    console.log("Rendered Table")
   }
 
   handleRowAction(event) {
