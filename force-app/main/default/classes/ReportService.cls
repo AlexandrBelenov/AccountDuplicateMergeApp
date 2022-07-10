@@ -4,6 +4,25 @@
 
 public with sharing class ReportService {
 
+    public Id runReportBatch() {
+        Id batchJobId;
+        try {
+            Map<Id, Custom_Duplicate_Rule__mdt> duplicateRules =
+                    CustomMetadataTypeRepository.getCustomDuplicateRule();
+            Map<Id, Custom_Matching_Rule__mdt> matchingRules =
+                    CustomMetadataTypeRepository.getCustomMatchingRule(duplicateRules.keySet());
+            Set<String> fields = Utils.getMatchingFields(matchingRules);
+            final String query = Utils.getAccountQuery(fields);
+
+            FindAccountDuplicatesBatch batch = new FindAccountDuplicatesBatch(query, matchingRules);
+            batchJobId = Database.executeBatch(batch, 200);
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+
+        return batchJobId;
+    }
+
     public List<DuplicateRecordSetData> runReport() {
         List<DuplicateRecordSetData> result;
         try {

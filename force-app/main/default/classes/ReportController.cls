@@ -7,6 +7,12 @@ public with sharing class ReportController {
     private static ReportService reportCtrl = new ReportService();
 
     @AuraEnabled
+    public static Id runReportBatch() {
+        Id result = reportCtrl.runReportBatch();
+        return result;
+    }
+
+    @AuraEnabled
     public static List<DuplicateRecordSetData> runReport() {
         List<DuplicateRecordSetData> result = reportCtrl.runReport();
         return result;
