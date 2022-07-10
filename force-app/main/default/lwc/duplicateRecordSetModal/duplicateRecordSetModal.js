@@ -2,11 +2,13 @@
  * Created by alexanderbelenov on 06.07.2022.
  */
 import { api, LightningElement} from "lwc";
+import mergeAndSave from '@salesforce/apex/ReportController.mergeAndSave';
 
 export default class DuplicateRecordSetModal extends LightningElement {
   @api duplicateRecordSetId;
   selectedAccounts;
   selectedMaster;
+  notMasterAccount;
   mergedAccount;
 
   currentStepNumber = 1;
@@ -26,10 +28,22 @@ export default class DuplicateRecordSetModal extends LightningElement {
   handleMasterSelection(event) {
     if (event.detail && event.detail.length > 0) {
       this.selectedMaster = event.detail[0];
+      this.mergeAccounts();
     }
   }
 
-
+  mergeAccounts() {
+    this.selectedAccounts.forEach(el => {
+      if (el.Id !== this.selectedMaster.Id) {
+        this.notMasterAccount = el;
+      }
+    });
+    this.mergedAccount = {
+      ...this.notMasterAccount,
+      ...this.selectedMaster
+    }
+    console.log(this.mergedAccount);
+  }
 
   showCurrentStep() {
     this.isFirstStep = this.currentStepNumber === 1;
@@ -51,15 +65,21 @@ export default class DuplicateRecordSetModal extends LightningElement {
   }
 
   save() {
-    // save code here
-    this.closeModal();
+    mergeAndSave({
+      masterAccount: this.selectedMaster.Id,
+      mergeAccount: this.notMasterAccount.Id,
+      duplicateRecordSetId: this.duplicateRecordSetId
+    }).then(result => {
+      this.closeModal();
+    }).catch(error => {
+      console.log(error)
+    })
+
   }
 
   closeModal() {
     this.refreshStates();
-    const closeEvent = new CustomEvent("closemodal", {
-      detail: this.duplicateRecordSetId
-    });
+    const closeEvent = new CustomEvent("closemodal", {});
     this.dispatchEvent(closeEvent);
   }
 

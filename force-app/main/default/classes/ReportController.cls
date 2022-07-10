@@ -18,4 +18,14 @@ public with sharing class ReportController {
         System.debug(result);
         return result;
     }
+    @AuraEnabled
+    public static void mergeAndSave(Id masterAccount, Id mergeAccount, Id duplicateRecordSetId) {
+        reportCtrl.mergeAndSave(masterAccount, mergeAccount, duplicateRecordSetId);
+    }
+
+    @AuraEnabled
+    public static List<DuplicateRecordSetData> getDuplicateRecordSets() {
+        List<DuplicateRecordSetData> result = reportCtrl.getDuplicateRecordSets();
+        return result;
+    }
 }

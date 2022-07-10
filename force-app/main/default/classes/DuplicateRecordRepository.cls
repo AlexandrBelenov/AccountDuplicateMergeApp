@@ -11,6 +11,15 @@ public with sharing class DuplicateRecordRepository {
         ];
     }
 
+    public static List<CustomDuplicateRecordSet__c> getCustomDuplicateRecordSet(Id id) {
+        if (id == null) return new List<CustomDuplicateRecordSet__c>();
+        return [
+                SELECT Id, Name, Record_Count__c
+                FROM CustomDuplicateRecordSet__c
+                WHERE Id = :id
+        ];
+    }
+
     public static List<CustomDuplicateRecordItem__c>  getCustomDuplicateRecordItem(Set<Id> parentIds) {
         if (parentIds == null || parentIds.isEmpty()) return new List<CustomDuplicateRecordItem__c>();
         return [
@@ -36,5 +45,11 @@ public with sharing class DuplicateRecordRepository {
 
     public static void insertCustomDuplicateRecordItem(List<CustomDuplicateRecordItem__c> objs) {
         insert objs;
+    }
+
+    public static void removeCustomDuplicateRecordSet(List<CustomDuplicateRecordSet__c> customDuplicateRecordSets) {
+        if (customDuplicateRecordSets != null && customDuplicateRecordSets.size() > 0) {
+            delete customDuplicateRecordSets;
+        }
     }
 }

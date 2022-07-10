@@ -33,4 +33,29 @@ public with sharing class ReportService {
         return result;
     }
 
+    public void mergeAndSave(Id masterAccount, Id mergeAccount, Id duplicateRecordSetId) {
+        try {
+            List<CustomDuplicateRecordSet__c> duplicateRecordSets = DuplicateRecordRepository.getCustomDuplicateRecordSet(duplicateRecordSetId);
+            DuplicateRecordRepository.removeCustomDuplicateRecordSet(duplicateRecordSets);
+
+            System.debug(masterAccount);
+            System.debug(mergeAccount);
+            System.debug(duplicateRecordSetId);
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+    }
+
+    public List<DuplicateRecordSetData> getDuplicateRecordSets() {
+        List<DuplicateRecordSetData> result;
+        try {
+            List<CustomDuplicateRecordSet__c> customRecords = DuplicateRecordRepository.getCustomDuplicateRecordSet();
+            result = Convertor.convertCustomDuplicateRecordSetToDuplicateRecordSetData(customRecords);
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+
+        return result;
+    }
+
 }
