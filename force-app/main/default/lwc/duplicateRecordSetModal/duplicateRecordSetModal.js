@@ -42,7 +42,6 @@ export default class DuplicateRecordSetModal extends LightningElement {
       ...this.notMasterAccount,
       ...this.selectedMaster
     }
-    console.log(this.mergedAccount);
   }
 
   showCurrentStep() {

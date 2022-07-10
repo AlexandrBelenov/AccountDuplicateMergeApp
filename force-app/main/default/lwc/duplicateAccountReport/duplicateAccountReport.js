@@ -20,7 +20,6 @@ export default class DuplicateAccountReport extends LightningElement {
   handleModalClosed(e) {
     getDuplicateRecordSets.then(result => {
       this.duplicateRecordSetList = result;
-      console.log()
     }).catch(error => {
       console.log(error)
     })
