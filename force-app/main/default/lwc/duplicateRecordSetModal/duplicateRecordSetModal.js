@@ -7,6 +7,7 @@ export default class DuplicateRecordSetModal extends LightningElement {
   @api duplicateRecordSetId;
   selectedAccounts;
   selectedMaster;
+  mergedAccount;
 
   currentStepNumber = 1;
   currentStepName;
@@ -27,6 +28,8 @@ export default class DuplicateRecordSetModal extends LightningElement {
       this.selectedMaster = event.detail[0];
     }
   }
+
+
 
   showCurrentStep() {
     this.isFirstStep = this.currentStepNumber === 1;

@@ -25,7 +25,7 @@
             ></c-compare-accounts>
           </template>
           <template if:true={isThirdStep}>
-            <div>3. Save Account</div>
+            <c-save-account account={mergedAccount}></c-save-account>
           </template>
         </main>
         <footer class="slds-modal__footer">
