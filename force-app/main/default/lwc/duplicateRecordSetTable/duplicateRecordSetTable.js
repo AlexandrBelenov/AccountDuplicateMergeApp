@@ -42,8 +42,8 @@ export default class DuplicateRecordSetTable extends LightningElement {
   }
   handleCloseModal(e) {
     this.modalDuplicateRecordSetId = ''
-    // const closeEvent = new CustomEvent("refreshduplicatelist", {});
-    // this.dispatchEvent(closeEvent);
+    const closeEvent = new CustomEvent("refreshduplicatelist", {});
+    this.dispatchEvent(closeEvent);
   }
 
 }
