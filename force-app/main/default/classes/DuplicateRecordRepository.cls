@@ -29,4 +29,12 @@ public with sharing class DuplicateRecordRepository {
         ]);
         return ids;
     }
+
+    public static void insertCustomDuplicateRecordSet(List<CustomDuplicateRecordSet__c> objs) {
+        insert objs;
+    }
+
+    public static void insertCustomDuplicateRecordItem(List<CustomDuplicateRecordItem__c> objs) {
+        insert objs;
+    }
 }

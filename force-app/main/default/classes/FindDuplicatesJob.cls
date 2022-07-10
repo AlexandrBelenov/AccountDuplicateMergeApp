@@ -6,9 +6,7 @@ public with sharing class FindDuplicatesJob {
 
     public void run() {
         Map<String, List<Id>> duplicateMap = this.find();
-
         this.saveDuplicateSets(duplicateMap);
-
     }
 
     private Map<String, List<Id>> find() {
@@ -50,7 +48,7 @@ public with sharing class FindDuplicatesJob {
         for (Integer i = 0; i < duplicates.keySet().size(); i++) {
             customDuplicateRecordSets.add(new CustomDuplicateRecordSet__c());
         }
-        insert customDuplicateRecordSets;
+        DuplicateRecordRepository.insertCustomDuplicateRecordSet(customDuplicateRecordSets);
 
         // generate the DuplicateRecordItem
         List<List<Id>> idMatrix = duplicates.values();
@@ -65,7 +63,7 @@ public with sharing class FindDuplicatesJob {
             }
 
         }
-        insert customDuplicateRecordItems;
+        DuplicateRecordRepository.insertCustomDuplicateRecordItem(customDuplicateRecordItems);
     }
 
 }
