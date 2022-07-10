@@ -7,6 +7,8 @@ public with sharing class ReportService {
     public List<DuplicateRecordSetData> runReport() {
         List<DuplicateRecordSetData> result;
         try {
+            this.removeExistedCustomDuplicatesRecordSets();
+
             FindDuplicatesJob duplicatesJob = new FindDuplicatesJob();
             duplicatesJob.run();
 
@@ -38,9 +40,8 @@ public with sharing class ReportService {
             List<CustomDuplicateRecordSet__c> duplicateRecordSets = DuplicateRecordRepository.getCustomDuplicateRecordSet(duplicateRecordSetId);
             DuplicateRecordRepository.removeCustomDuplicateRecordSet(duplicateRecordSets);
 
-            System.debug(masterAccount);
-            System.debug(mergeAccount);
-            System.debug(duplicateRecordSetId);
+            Map<Id, Account> accountMap = new Map<Id, Account>(AccountRepository.getAccounts(new Set<Id>{masterAccount, mergeAccount}));
+            AccountRepository.mergeAccounts(accountMap.get(masterAccount), accountMap.get(mergeAccount));
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());
         }
@@ -56,6 +57,11 @@ public with sharing class ReportService {
         }
 
         return result;
+    }
+
+    private void removeExistedCustomDuplicatesRecordSets() {
+        List<CustomDuplicateRecordSet__c> recordSets = DuplicateRecordRepository.getCustomDuplicateRecordSet();
+        DuplicateRecordRepository.removeCustomDuplicateRecordSet(recordSets);
     }
 
 }

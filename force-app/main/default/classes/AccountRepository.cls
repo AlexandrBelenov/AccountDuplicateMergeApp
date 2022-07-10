@@ -13,4 +13,8 @@ public with sharing class AccountRepository {
         ];
     }
 
+    public static void mergeAccounts(Account masterAccount, Account mergeAccount) {
+        merge masterAccount mergeAccount;
+    }
+
 }
