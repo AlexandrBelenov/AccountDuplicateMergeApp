@@ -7,6 +7,8 @@ public with sharing class ReportService {
     public Id runReportBatch() {
         Id batchJobId;
         try {
+            this.removeExistedCustomDuplicatesRecordSets();
+
             Map<Id, Custom_Duplicate_Rule__mdt> duplicateRules =
                     CustomMetadataTypeRepository.getCustomDuplicateRule();
             Map<Id, Custom_Matching_Rule__mdt> matchingRules =
@@ -15,7 +17,7 @@ public with sharing class ReportService {
             final String query = Utils.getAccountQuery(fields);
 
             FindAccountDuplicatesBatch batch = new FindAccountDuplicatesBatch(query, matchingRules);
-            batchJobId = Database.executeBatch(batch, 200);
+            batchJobId = Database.executeBatch(batch, Constants.DEFAULT_BATCH_SIZE);
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());
         }
