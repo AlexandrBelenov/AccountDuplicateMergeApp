@@ -8,8 +8,5 @@ export default class SaveAccount extends LightningElement {
 
   @api account;
 
-  renderedCallback() {
-    console.log(this.account);
-  }
 
 }

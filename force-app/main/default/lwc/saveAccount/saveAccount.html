@@ -4,5 +4,25 @@
 
 <!-- Save Account -->
 <template>
-  <div>Save Account</div>
+  <div class="slds-text-title_bold slds-text-align_center">Save Account</div>
+  <div class="slds-grid slds-wrap">
+    <div class="slds-col slds-size_1-of-3">
+      <lightning-input label="Name" value={account.Name} readonly></lightning-input>
+    </div>
+    <div class="slds-col slds-size_1-of-3">
+      <lightning-input label="Phone" value={account.Phone} readonly></lightning-input>
+    </div>
+    <div class="slds-col slds-size_1-of-3">
+      <lightning-input label="Billing City" value={account.BillingCity} readonly></lightning-input>
+    </div>
+    <div class="slds-col slds-size_1-of-3">
+      <lightning-input label="Website" value={account.Website} readonly></lightning-input>
+    </div>
+    <div class="slds slds-size_1-of-3">
+      <lightning-input label="Industry" value={account.Industry} readonly></lightning-input>
+    </div>
+    <div class="slds-col slds-size_1-of-3">
+      <lightning-input label="Billing State" value={account.BillingState} readonly></lightning-input>
+    </div>
+  </div>
 </template>
