@@ -1,0 +1,33 @@
+<!--
+ - Created by alexanderbelenov on 05.07.2022.
+ -->
+
+<!-- Duplicate Record Set Table -->
+<template>
+  <div class="slds-box slds-theme_default">
+    <div class="slds-grid">
+      <div class="slds-col slds-size_1-of-8">
+        <lightning-input label="Total Records" value={totalRecords} readonly></lightning-input>
+      </div>
+      <div class="slds-col slds-size_1-of-8">
+        <lightning-input label="Total Record Count" value={totalRecordCount} readonly></lightning-input>
+      </div>
+    </div>
+    <lightning-datatable
+      key-field="Id"
+      show-row-number-column="true"
+      hide-checkbox-column="true"
+      data={duplicateRecordSetList}
+      columns={columns}
+      onrowaction= {handleRowAction}
+    >
+    </lightning-datatable>
+  </div>
+  <c-duplicate-record-set-modal duplicate-record-set-id={modalDuplicateRecordSetId}
+                                onclosemodal={handleCloseModal}>
+
+  </c-duplicate-record-set-modal>
+  </template>
+
+
+</template>

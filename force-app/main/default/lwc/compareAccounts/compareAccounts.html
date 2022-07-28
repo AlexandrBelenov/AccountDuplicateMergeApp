@@ -1,0 +1,16 @@
+<!--
+ - Created by alexanderbelenov on 10.07.2022.
+ -->
+
+<!-- Compare Accounts -->
+<template>
+  <div class="slds-text-title_bold slds-text-align_center">Compare Accounts, choose a master</div>
+  <lightning-datatable
+    key-field="Id"
+    max-row-selection=1
+    data={selectedAccounts}
+    columns={columns}
+    onrowselection= {handleRowSelection}
+  >
+  </lightning-datatable>
+</template>
